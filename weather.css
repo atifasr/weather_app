@@ -1,0 +1,41 @@
+.curr_weather {
+    font-size: 30vh;
+    color: rgb(224, 212, 32);
+}
+
+.fa-cloud{
+    color: rgb(88, 88, 77);
+}
+.fa-snowflake{
+    color: rgb(177, 177, 165);
+}
+
+.container{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+.form-enter{
+    width: 50%;
+    margin: auto;
+    background-color: rgb(247, 243, 238);
+    border-radius: 5%;
+    padding: 2%;
+}
+.form-enter > * {
+    display: list-item;
+    margin: 10px;
+    list-style: none;
+}
+
+.weather_block{
+    margin: auto;
+    width: 50%;
+    font-weight: bolder;
+    background-color: rgb(247, 243, 238);
+    border-radius: 5%;
+    padding: 2%;
+    font-size: 3vw;
+
+}
+

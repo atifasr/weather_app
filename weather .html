@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="weather.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="form-enter">
+            <label for="location">location</label>
+            <input type="text" class="location" name="location" id="location">
+            <label for="state_code">State Code</label>
+            <input type="text" class="state_code" name="location" id="state_code">
+            <label for="city">city</label>
+            <input type="text" class="city" name="city" id="city">
+            <button type="submit" class="search"> Search </button>
+        </div>
+
+        <div class="weather_block">
+            <i class="fas fa-sun curr_weather"></i>
+            <small class="in_city"></small>
+            <div class="card">
+                <div class="card-body">
+                   
+                    <p class="temp_cel"></p>
+                    <p class="max_temp"></p>
+                    <p class="city_name"></p>
+                    <p class="sun_set"></p>
+                    <p class="sun_rise"></p>
+                </div>
+            </div>
+           
+        </div>
+     
+    </div>
+
+  
+    <div class="container">
+        <h3 class="display-5">Hourly forecast for next 5 days </h3>
+        <div class="row forcast">
+            
+        </div>
+    </div>
+   
+    </div>
+    </div>
+
+    <script type="module" src="secret.js"></script>
+    <script type="module" src="weather.js"></script>
+    
+</body>
+</html>
