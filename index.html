@@ -14,12 +14,10 @@
 
 <body>
     <div class="container">
+        <h3 class="display-3">Weather app using Reverse Geocoding</h3>
         <div class="form-enter">
-            <label for="location">location</label>
-            <input type="text" class="location" name="location" id="location">
-            <label for="state_code">State Code</label>
-            <input type="text" class="state_code" name="location" id="state_code">
-            <label for="city">city</label>
+
+            <label for="city"> Search by city name</label>
             <input type="text" class="city" name="city" id="city">
             <button type="submit" class="search"> Search </button>
         </div>
@@ -29,7 +27,8 @@
             <small class="in_city"></small>
             <div class="card">
                 <div class="card-body">
-                   
+                    <p class="day_curr"></p>
+                    <h3 class="city_name"></h3>
                     <p class="temp_cel"></p>
                     <p class="max_temp"></p>
                     <p class="city_name"></p>

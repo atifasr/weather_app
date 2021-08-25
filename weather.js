@@ -1,6 +1,4 @@
 
-
-
 window.onload = (e)=>{
     e.preventDefault()
     
@@ -54,10 +52,7 @@ window.onload = (e)=>{
 
 
     const fetchWeather = (cityname)=>{
-
-        let loc = document.querySelector('.location').value
-        let city = document.querySelector('.city').value
-        let state_code = document.querySelector('.state_code').value
+     
         let temperature_block = document.querySelector('.temp_cel')
         let max_temp = document.querySelector('.max_temp')
         let city_name = cityname
@@ -66,10 +61,11 @@ window.onload = (e)=>{
         let country_code = '+91'
         let count = 7
         let forecastRow = document.querySelector('.forcast')
+        let state_code = ''
        
 
-        state_code = parseInt(state_code)
-        console.log(loc , city)
+
+      
         const key = open_weatherApikey
         
 
@@ -92,7 +88,7 @@ window.onload = (e)=>{
                 
                 
                 // function for current weather
-                currentWeather(current_weather,temperature_block,logo_weather,max_temp)
+                currentWeather(current_weather,temperature_block,logo_weather,max_temp,city_name)
                 // function for forecast weather
                 foreCastWeather(data,forecastRow)
 
@@ -112,30 +108,18 @@ window.onload = (e)=>{
 
       
     fetchWeather('srinagar')  
-   
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
    
     searchButton.addEventListener('click',function(e){
         e.preventDefault()
-        fetchWeather()
+        let city = document.querySelector('.city').value
+        fetchWeather(city)
     }
     
     )
-    console.log('not blocking API request')
+   
 
 }
 
@@ -143,9 +127,11 @@ window.onload = (e)=>{
 
 
 
-const currentWeather = (current_weather,temperature_block,logo_weather,max_temp) =>{
+const currentWeather = (current_weather,temperature_block,logo_weather,max_temp,city_name) =>{
     let sun_set = document.querySelector('.sun_set')
     let sun_rise = document.querySelector('.sun_rise')
+    let city_ = document.querySelector('.city_name')
+    let day_ = document.querySelector('.day_curr')
 
     const temperature = temperatureConverter(current_weather.main.temp).toFixed(2)
     
@@ -161,8 +147,9 @@ const currentWeather = (current_weather,temperature_block,logo_weather,max_temp)
                 logo_weather.classList.replace('fa-sun','fa-snowflake')
             }
             else logo_weather.classList.replace('fa-sun','fa-cloud')
-
-            max_temp.innerHTML = 'Max temperature '+ temperature;
+            day_.innerHTML = getDay(getISTTime(current_weather.dt))
+            city_.innerHTML = city_name +'<small> '+current_weather.sys.country+' </small>'
+            max_temp.innerHTML = 'Max temperature '+ temperature+' C';
             // city_name.innerHTML = data.name + ` <small>${data.sys.country}</small>`
             sun_set.innerHTML = 'Sunset '+ getISTTime(current_weather.sys.sunset)
             sun_rise.innerHTML = 'Sunrise '+ getISTTime(current_weather.sys.sunrise)
@@ -172,7 +159,12 @@ const currentWeather = (current_weather,temperature_block,logo_weather,max_temp)
 
 
 
-
+let getDay = (date)=>{
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let day_ =  new Date(date)
+    day_ = day_.getDay()
+    return days[day_]
+}
 
 function temperatureConverter(valNum) {
     valNum = parseFloat(valNum);
@@ -226,17 +218,33 @@ return time;
         for (let i = 0 ;i < length ; i++)
         {   
             let colElem = document.createElement('div')
+            let temp_log = document.createElement('i')
+            temp_log.setAttribute('class','fas fa-sun')
+            let temperature = temperatureConverter(daily_forcast[i].main.temp);
+            // console.log(temp_log)
+            let class_logo = 'fa-sun'
+            
+            if (temperature > 25){
+                class_logo = 'fa-sun'
+            }
+            else if (temperature < 12)
+            {
+                class_logo = 'fa-snowflake'
+            }
+            else class_logo = 'fa-cloud'
             colElem.setAttribute('class','col-md-4')
             colElem.innerHTML = 
             `<div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Date ${getISTTime(daily_forcast[i].dt)}</h5>
+                    <i class="fas ${class_logo} forecast_logo"></i>
+                    <h5 class="card-title"> ${getISTTime(daily_forcast[i].dt)}</h5>
                     <p class="temp_cel"> Temperature ${temperatureConverter(daily_forcast[i].main.temp).toFixed(2)}</p>
                     <p class="max_temp">Max Temp: ${temperatureConverter(daily_forcast[i].main.temp_max).toFixed(2)}</p>
-                    <p class="humidity">Humidity : ${daily_forcast[i].main.humidity}</p>
+                    <p class="humidity">Humidity : ${daily_forcast[i].main.humidity}%</p>
                     <p class="sun_rise"> Description : ${daily_forcast[i].weather[0].description}</p>
                 </div>
             </div>`
+        
             forecastRow.appendChild(colElem)
                                 
         }

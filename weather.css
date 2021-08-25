@@ -1,7 +1,17 @@
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(218, 208, 208);
+}
+
 .curr_weather {
     font-size: 30vh;
     color: rgb(224, 212, 32);
 }
+
 
 .fa-cloud{
     color: rgb(88, 88, 77);
@@ -35,7 +45,30 @@
     background-color: rgb(247, 243, 238);
     border-radius: 5%;
     padding: 2%;
-    font-size: 3vw;
+    font-size: 2vw;
 
 }
 
+.city_name{
+    font-weight: bolder;
+    font-size: 5vw;
+    text-transform: capitalize;
+    color: rgb(228, 120, 32);
+}
+
+
+.card-body{
+    border-radius: 5%;
+    background-color: rgba(207, 177, 166, 0.562);
+    margin: 0 6px 0 6px;
+}
+
+.card-body{
+    font-family: 'Fira Code';
+    font-weight: 900;
+}
+
+.forecast_logo{
+    font-size: 6vw;
+    color: rgb(230, 215, 19);
+}
