@@ -1,4 +1,4 @@
-import { key,open_weatherApikey } from "./secret.js"
+
 
 
 window.onload = (e)=>{
